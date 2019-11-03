@@ -4,9 +4,13 @@
 
 import logging
 
+# noinspection PyPackageRequirements
 from telegram.ext import CommandHandler
+# noinspection PyPackageRequirements
 from telegram.ext import Filters
+# noinspection PyPackageRequirements
 from telegram.ext import MessageHandler
+# noinspection PyPackageRequirements
 from telegram.ext import Updater
 
 FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
@@ -18,16 +22,19 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
+# noinspection PyUnusedLocal
 def start(update, context):
     first_name = update.message.from_user.first_name
     last_name = update.message.from_user.last_name
     update.message.reply_text(f'Hello, {first_name} {last_name}.')
 
 
+# noinspection PyUnusedLocal
 def help_(update, context):
     update.message.reply_text('sorry i can\'t help you.')
 
 
+# noinspection PyUnusedLocal
 def echo(update, context):
     update.message.reply_text(f'>>> {update.message.text}')
 
