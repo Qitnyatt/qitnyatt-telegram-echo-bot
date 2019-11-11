@@ -5,6 +5,8 @@
 import logging
 
 # noinspection PyPackageRequirements
+import environ
+# noinspection PyPackageRequirements
 from telegram.ext import CommandHandler
 # noinspection PyPackageRequirements
 from telegram.ext import Filters
@@ -44,7 +46,11 @@ def error(update, context):
 
 
 def main():
-    token = input('TOKEN:')
+    env = environ.Env(
+        qitnyatt_telegram_echo_bot__TOKEN=(str, ''),
+    )
+    environ.Env.read_env()
+    token = env('qitnyatt_telegram_echo_bot__TOKEN')
     updater = Updater(token, use_context=True)
     dispatcher = updater.dispatcher
     dispatcher.add_handler(CommandHandler('start', start))
